@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Person add</title>
+</head>
+<body>
+<div th:if="${not #lists.isEmpty(persons)}">
+    <h2>Person List</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Age</th>
+            <th></th>
+        </tr>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.id}"></td>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.age}"></td>
+            <td><a th:href="@{'/deletePerson/'+${person.id}}">Delete</a></td>
+        </tr>
+        <a th:href="@{'/'}">Add next</a>
+    </table>
+</div>
+</body>
+</html>
